@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.conf import settings
-from .models import SocialMedia,MishanCompany
+from .models import SocialMedia,MishanCompany, Destination
 
 # Create your views here.
 
@@ -8,13 +8,24 @@ from .models import SocialMedia,MishanCompany
 def Home(request):
     # Fetch company info (assuming you're only interested in the first entry)
     company_info = MishanCompany.objects.first()  # Retrieve the first entry
+    destinations =  Destination.objects.all()  # Fetch all images
 
     context = {
     'company_info': company_info,
-
+    'destinations': destinations,
     }
 
     return render(request, 'base/index.html', context)
+
+def gallary(request):
+    destinations =  Destination.objects.all()  # Fetch all images
+
+
+    context = {
+    'destinations': destinations,
+
+    }
+    return render(request,'base/gallary.html',context)
 
 
 def About(request):

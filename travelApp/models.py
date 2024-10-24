@@ -93,16 +93,16 @@ class Booking(models.Model):
         return f"Booking for {self.user.username} to {self.tour.destination.name}"  # Show destination name
 
 
-from django.db import models
+# from django.db import models
 
-class Gallery(models.Model):
-    title = models.CharField(max_length=255, blank=True)  # Optional title for the image
-    image = models.ImageField(upload_to='gallery/')  # Path where images are stored
-    destination = models.ForeignKey('Destination', on_delete=models.CASCADE, null=True, blank=True)
-    offer = models.ForeignKey('Offer', on_delete=models.CASCADE, null=True, blank=True)
+# class Gallery(models.Model):
+#     title = models.CharField(max_length=255, blank=True)  # Optional title for the image
+#     image = models.ImageField(upload_to='gallery/')  # Path where images are stored
+#     destination = models.ForeignKey('Destination', on_delete=models.CASCADE, null=True, blank=True)
+#     offer = models.ForeignKey('Offer', on_delete=models.CASCADE, null=True, blank=True)
 
-    def __str__(self):
-        return self.title if self.title else 'Gallery Image'
+#     def __str__(self):
+#         return self.title if self.title else 'Gallery Image'
 
 
 class SocialMedia(models.Model):

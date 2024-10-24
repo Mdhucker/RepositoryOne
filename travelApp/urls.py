@@ -17,7 +17,7 @@ urlpatterns = [
     path('contact/', views.contact, name='contact'),
     path('team/', views.team, name='team'),
 
-
+    path('gallary/', views.gallary, name='gallary'),
 
 
     path('redirect/<str:platform>/', views.social_media_redirect, name='social_media_redirect'),

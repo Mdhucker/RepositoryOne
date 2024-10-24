@@ -142,3 +142,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),  # Path to your static folder
 ]
+
+# Media settings for user-uploaded files
+MEDIA_URL = '/media/'  # This is the URL prefix for media files
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  # The directory where uploaded media files are stored
