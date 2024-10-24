@@ -56,22 +56,20 @@ class TeamMember(models.Model):
 
 # Mishan Company Model
 class MishanCompany(models.Model):
-    name = models.CharField(max_length=255)
-    founded = models.DateField()
-
-    service_type = models.CharField(max_length=255)
-    location = models.CharField(max_length=255)
-    phone_number = models.CharField(max_length=20)
-    contact_email = models.EmailField()
-    destinations = models.ManyToManyField(Destination)
-
-    established_date = models.DateField()
-    services = models.ManyToManyField(Service)
-    offers = models.ManyToManyField(Offer)
-    team = models.ManyToManyField(TeamMember)
+    name = models.CharField(max_length=255, blank=True, null=True)  # Allow blank
+    founded = models.DateField(blank=True, null=True)  # Allow blank and null
+    service_type = models.CharField(max_length=255, blank=True)  # Allow blank
+    location = models.CharField(max_length=255, blank=True)  # Allow blank
+    phone_number = models.CharField(max_length=20, blank=True)  # Allow blank
+    contact_email = models.EmailField(blank=True,null=True)  # Allow blank
+    destinations = models.ManyToManyField('Destination', blank=True)  # Allow blank
+    established_date = models.DateField(blank=True, null=True)  # Allow blank and null
+    services = models.ManyToManyField('Service', blank=True)  # Allow blank
+    offers = models.ManyToManyField('Offer', blank=True)  # Allow blank
+    team = models.ManyToManyField('TeamMember', blank=True)  # Allow blank
 
     def __str__(self):
-        return self.name
+        return self.location if self.location else "Company Name Not Provided"
 
 class Tour(models.Model):
     destination = models.ForeignKey(Destination, on_delete=models.CASCADE)  # Changed to use ForeignKey

@@ -46,7 +46,10 @@
   
 
 <body>
-   
+    {% block header %}
+    {% include 'top_header.html' %}
+    {% endblock %}
+
 
    
     {% block contents %}
@@ -71,6 +74,7 @@
     <script src="{% static 'lib/tempusdominus/js/moment.min.js' %}"></script>
     <script src="{% static 'lib/tempusdominus/js/moment-timezone.min.js' %}"></script>
     <script src="{% static 'lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js' %}"></script>
+    <script src="{% static 'js/whatsapp.js' %}"></script>
 
     <!-- Template Javascript -->
     <script src="{% static 'js/main.js' %}"></script>

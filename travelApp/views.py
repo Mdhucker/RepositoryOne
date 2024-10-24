@@ -1,79 +1,97 @@
 from django.shortcuts import render
 from django.conf import settings
-from .models import SocialMedia
+from .models import SocialMedia,MishanCompany
 
 # Create your views here.
 
-def Home(request):
-    
-    return render(request,'base/index.html', {'settings': settings})
 
+def Home(request):
+    # Fetch company info (assuming you're only interested in the first entry)
+    company_info = MishanCompany.objects.first()  # Retrieve the first entry
+
+    context = {
+    'company_info': company_info,
+
+    }
+
+    return render(request, 'base/index.html', context)
 
 
 def About(request):
-    
-    return render(request,'base/about.html')
+    company_info = MishanCompany.objects.first()  # Retrieve the first entry
+
+    context = {
+    'company_info': company_info,
+
+    }
+    return render(request,'base/about.html', context)
 
 
 
 
 def services(request):
-    
-    return render(request,'base/service.html')
+    company_info = MishanCompany.objects.first()  # Retrieve the first entry
+
+    context = {
+    'company_info': company_info,
+
+    }
+    return render(request,'base/service.html', context)
 
 
 
 def packages(request):
-    
-    return render(request,'base/package.html')
+    company_info = MishanCompany.objects.first()  # Retrieve the first entry
+
+    context = {
+    'company_info': company_info,
+
+    }
+    return render(request,'base/package.html', context)
 
 
 
 def destination(request):
-    
-    return render(request,'base/destination.html')
+    company_info = MishanCompany.objects.first()  # Retrieve the first entry
+
+    context = {
+    'company_info': company_info,
+
+    }
+    return render(request,'base/destination.html', context)
 
 
 
 def booking(request):
-    
-    return render(request,'base/booking.html')
+    company_info = MishanCompany.objects.first()  # Retrieve the first entry
+
+    context = {
+    'company_info': company_info,
+
+    }
+    return render(request,'base/booking.html', context)
 
 
 
 def testimonial(request):
-    
-    return render(request,'base/testimonial.html')
+    company_info = MishanCompany.objects.first()  # Retrieve the first entry
+
+    context = {
+    'company_info': company_info,
+
+    }
+    return render(request,'base/testimonial.html', context)
 
 
 
 def errorpage(request):
-    
-    return render(request,'base/404.html')
+    company_info = MishanCompany.objects.first()  # Retrieve the first entry
 
+    context = {
+    'company_info': company_info,
 
-# from django.shortcuts import render
-# from .models import SocialMedia
-# from django.http import Http404  # Import Http404 for raising errors
-
-# def contact(request):
-#     twitter_link = SocialMedia.objects.filter(platform='Twitter').first()
-#     facebook_link = SocialMedia.objects.filter(platform='Facebook').first()
-#     youtube_link = SocialMedia.objects.filter(platform='YouTube').first()
-#     linkedin_link = SocialMedia.objects.filter(platform='LinkedIn').first()
-    
-#     # Check if any of the required links are missing
-#     if not twitter_link or not facebook_link or not youtube_link or not linkedin_link:
-#         raise Http404("One or more social media links are missing.")
-
-#     context = {
-#         'twitter_link': twitter_link.link,
-#         'facebook_link': facebook_link.link,
-#         'youtube_link': youtube_link.link,
-#         'linkedin_link': linkedin_link.link,
-#     }
-    
-#     return render(request, 'base/contact.html', context)
+    }
+    return render(request,'base/404.html', context)
 
 
 
@@ -81,8 +99,13 @@ def errorpage(request):
 
 
 def team(request):
-    
-    return render(request,'base/team.html')
+    company_info = MishanCompany.objects.first()  # Retrieve the first entry
+
+    context = {
+    'company_info': company_info,
+
+    }
+    return render(request,'base/team.html', context)
 
 
 from django.shortcuts import render, redirect, get_object_or_404
@@ -92,7 +115,15 @@ from django.http import Http404
 def contact(request):
     # Fetch all social media links to pass to the template
     social_media_links = SocialMedia.objects.all()
-    context = {link.platform: link.link for link in social_media_links}
+    company_info = MishanCompany.objects.first()  # Retrieve the first entry
+
+    socialmedia = {link.platform: link.link for link in social_media_links}
+
+    context = {
+        'company_info': company_info,
+        'socialmedia':socialmedia,
+        }
+
 
     return render(request, 'base/contact.html', context)
 

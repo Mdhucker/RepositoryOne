@@ -14,45 +14,15 @@
 
 
     <!-- Topbar Start -->
-    <div class="container-fluid bg-dark px-5 d-none d-lg-block">
-        <div class="row gx-0">
-            <div class="col-lg-8 text-center text-lg-start mb-2 mb-lg-0">
-                <div class="d-inline-flex align-items-center" style="height: 45px;">
-                    <small class="me-3 text-light"><i class="fa fa-map-marker-alt me-2"></i>123 Street, New York, USA</small>
-                    <small class="me-3 text-light"><i class="fa fa-phone-alt me-2"></i>+012 345 6789</small>
-                    <small class="text-light"><i class="fa fa-envelope-open me-2"></i>info@example.com</small>
-                </div>
-            </div>
-            <div class="col-lg-4 text-center text-lg-end">
-                <div class="d-inline-flex align-items-center" style="height: 45px;">
-                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href=""><i class="fab fa-twitter fw-normal"></i></a>
-                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href=""><i class="fab fa-facebook-f fw-normal"></i></a>
-                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href=""><i class="fab fa-linkedin-in fw-normal"></i></a>
-                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href=""><i class="fab fa-instagram fw-normal"></i></a>
-                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle" href=""><i class="fab fa-youtube fw-normal"></i></a>
-                </div>
-            </div>
-        </div>
-    </div>
+   
     <!-- Topbar End -->
 
 
     <!-- Navbar & Hero Start -->
     <div class="container-fluid position-relative p-0">
         <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
-            <a href="" class="navbar-brand p-0">
-                <!-- <img src="img/logo.png" alt="Logo"> -->
-                <div style="display: flex; justify-content: center; align-items: center; padding: 15px;">
-                    <img 
-                        src="{% static 'img/logo.jpg' %}" 
-                        alt="Logo" 
-                        style="width: 150px; height: auto; filter: brightness(1.0); transition: transform 0.4s ease, box-shadow 0.4s ease; border-radius: 10px;"
-                        onmouseover="this.style.transform='scale(1.8)'; this.style.boxShadow='0 4px 20px rgba(0, 0, 0, 0.5)'" 
-                        onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none'"
-                    >
-                </div>
-                
-            </a>
+            {% include 'logo.html' %}
+
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                 <span class="fa fa-bars"></span>
             </button>
@@ -103,7 +73,8 @@
     <div class="container-xxl py-5">
         <div class="container">
             <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-                <h6 class="section-title bg-white text-center text-primary px-3">Contact Us</h6>
+                <h6 style="color: #007BFF;" class="section-title bg-white text-center px-3">Travel Guide
+                </h6>
                 <h1 class="mb-5">Contact For Any Query</h1>
             </div>
             <div class="row g-4">
@@ -111,30 +82,55 @@
                     <h5>Get In Touch</h5>
                     <p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos</p>
                     <div class="d-flex align-items-center mb-4">
-                        <div class="d-flex align-items-center justify-content-center flex-shrink-0 bg-primary" style="width: 50px; height: 50px;">
-                            <i class="fa fa-map-marker-alt text-white"></i>
+                        <div class="d-flex align-items-center justify-content-center flex-shrink-0" style="width: 50px; height: 50px; background-color: #007BFF;">
+                            <i class="fas fa-building text-white"></i> <!-- Office icon -->
                         </div>
                         <div class="ms-3">
-                            <h5 class="text-primary">Office</h5>
-                            <p class="mb-0">123 Street, New York, USA</p>
+                            <h5 style="color: #007BFF;">Office</h5>
+                            <!-- <h5 style="color: #007BFF;" class="text-primary">Office</h5> -->
+                            <p class="mb-0">
+                                {% if company_info %}
+                            {{ company_info.location }}
+                            {% else %}
+                            Location Not provided
+                            {% endif %}   
+                            </p>
                         </div>
                     </div>
                     <div class="d-flex align-items-center mb-4">
-                        <div class="d-flex align-items-center justify-content-center flex-shrink-0 bg-primary" style="width: 50px; height: 50px;">
+                        <div class="d-flex align-items-center justify-content-center flex-shrink-0" style="width: 50px; height: 50px; background-color: #007BFF;">
                             <i class="fa fa-phone-alt text-white"></i>
                         </div>
+                        
                         <div class="ms-3">
-                            <h5 class="text-primary">Mobile</h5>
-                            <p class="mb-0">+012 345 67890</p>
+                            <h5 style="color: #007BFF;">Mobile</h5>
+
+                            <!-- <h5 class="text-primary">Mobile</h5> -->
+                            <p class="mb-0">
+                            {% if company_info %}
+                                {{ company_info.phone }}
+                            {% else %}
+                            Mobile Not Provided
+                            {% endif %}
+                            </p>
                         </div>
                     </div>
                     <div class="d-flex align-items-center">
-                        <div class="d-flex align-items-center justify-content-center flex-shrink-0 bg-primary" style="width: 50px; height: 50px;">
+                        <div class="d-flex align-items-center justify-content-center flex-shrink-0" style="width: 50px; height: 50px; background-color: #007BFF;">
                             <i class="fa fa-envelope-open text-white"></i>
                         </div>
+                        
                         <div class="ms-3">
-                            <h5 class="text-primary">Email</h5>
-                            <p class="mb-0">info@example.com</p>
+                            <h5 style="color: #007BFF;">Email</h5>
+
+                            <!-- <h5 class="text-primary">Email</h5> -->
+                            <p class="mb-0">
+                             {% if company_info %}
+                                {{ company_info.contact_email }}
+                            {% else %}
+                            Email Not Provided
+                            {% endif %}    
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -172,7 +168,8 @@
                                 </div>
                             </div>
                             <div class="col-12">
-                                <button class="btn btn-primary w-100 py-3" type="submit">Send Message</button>
+
+                                <button style="background-color: #007BFF;" class="btn btn-primary w-100 py-3" type="submit">Send Message</button>
                             </div>
                         </div>
                     </form>
@@ -192,7 +189,6 @@
 
 
     <!-- Back to Top -->
-    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
 
 
   

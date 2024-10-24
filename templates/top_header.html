@@ -1,0 +1,60 @@
+{% load static %}
+
+<div class="container-fluid bg-dark px-5 d-none d-lg-block">
+    <div class="row gx-0">
+        <div class="col-lg-8 text-center text-lg-start mb-2 mb-lg-0">
+            <div class="d-inline-flex align-items-center" style="height: 45px;">
+                <small class="me-3 text-light"><i class="fa fa-map-marker-alt me-2"></i>
+
+                {% if company_info %}
+                    {{ company_info.location }}
+                {% else %}
+                    None
+                {% endif %}        
+
+                    </small>
+                <small class="me-3 text-light">    
+
+               <!-- WhatsApp -->
+                <a id="whatsapp-link" href="https://web.whatsapp.com/send?phone=+255625207028" target="_blank" style="display: inline-block; padding: 5px; color: white; border-radius: 15px; text-decoration: none; font-weight: bold; text-align: center;">
+                    <img src="{% static 'img/whatsap.png' %}" alt="WhatsApp" style="width: 24px; height: 24px; margin-right: 8px;"> 
+                </a>
+
+                </small>
+                <small class="text-light"><i class="fa fa-envelope-open me-2"></i>
+               {% if company_info %}
+                    {{ company_info.contact_email }}
+                {% else %}
+                None
+                {% endif %}    
+
+                    </small>
+            </div>
+        </div>
+        <div class="col-lg-4 text-center text-lg-end">
+            <div class="d-inline-flex align-items-center" style="height: 45px;">
+                <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" 
+                   href="{% url 'social_media_redirect' 'Twitter' %}" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-twitter fw-normal"></i>
+                </a>
+                <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" 
+                   href="{% url 'social_media_redirect' 'Facebook' %}" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-facebook-f fw-normal"></i>
+                </a>
+                <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" 
+                   href="{% url 'social_media_redirect' 'YouTube' %}" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-youtube fw-normal"></i>
+                </a>
+                <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" 
+                   href="{% url 'social_media_redirect' 'LinkedIn' %}" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-linkedin-in fw-normal"></i>
+                </a>
+                <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" 
+                   href="{% url 'social_media_redirect' 'Instagram' %}" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-instagram fw-normal"></i>
+                </a>
+            </div>
+        </div>
+        
+    </div>
+</div>
