@@ -169,8 +169,27 @@
     </div>
     <!-- Service End -->
 
-
+    
     <!-- Destination Start -->
+    <style>
+        /* Internal CSS for the destination section */
+        .destination {
+            padding: 5rem 0; /* Adjusting vertical padding */
+        }
+        .destination img {
+            object-fit: cover; /* Ensures the image covers the area without distortion */
+            width: 100%; /* Full width of the parent container */
+            height: 250px; /* Fixed height; adjust as needed */
+        }
+        .destination a {
+            position: relative; /* Needed for absolute positioning of overlay text */
+            display: block; /* Ensures the link is block-level for full clickable area */
+            overflow: hidden; /* Hides any overflow from images */
+        }
+        .destination .bg-white {
+            border-radius: 5px; /* Optional: adds rounded corners to the text overlays */
+        }
+    </style>
     <div class="container-xxl py-5 destination">
         <div class="container">
             <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
@@ -178,29 +197,32 @@
                 <h1 class="mb-5">Popular Destination</h1>
             </div>
             <div class="row g-3">
-                {% for destination in destinations %}
-                    <div class="col-lg-7 col-md-6">
-                        <div class="row g-3">
-                            <div class="col-lg-12 col-md-12 wow zoomIn" data-wow-delay="0.1s">
-                                <a class="position-relative d-block overflow-hidden" href="">
-                                    <img class="img-fluid" src="{{ destination.image.url }}" alt="{{ destination.name }}">
-                                    <div class="bg-white text-danger fw-bold position-absolute top-0 start-0 m-3 py-1 px-2">
-                                        {{ destination.discount }} OFF
-                                    </div>
-                                    <div class="bg-white text-primary fw-bold position-absolute bottom-0 end-0 m-3 py-1 px-2">
-                                        {{ destination.country }}
-                                    </div>
-                                </a>
-                            </div>
+                <div class="col-lg-7 col-md-6">
+                    <div class="row g-3">
+                        {% for destination in destinations %}
+                        <div class="col-lg-12 col-md-12 wow zoomIn" data-wow-delay="0.1s">
+                            <a class="position-relative d-block overflow-hidden" href="">
+                                <img class="img-fluid" src="{{ destination.image.url }}" alt="{{ destination.location }}">
+                                <div class="bg-white text-danger fw-bold position-absolute top-0 start-0 m-3 py-1 px-2">{{ destination.discount }}</div>
+                                <div class="bg-white text-primary fw-bold position-absolute bottom-0 end-0 m-3 py-1 px-2">{{ destination.location }}</div>
+                            </a>
                         </div>
+                        {% endfor %}
                     </div>
-                {% endfor %}
+                </div>
+                <div class="col-lg-5 col-md-6 wow zoomIn" data-wow-delay="0.7s" style="min-height: 350px;">
+                    {% if destinations.count > 0 %}
+                    <a class="position-relative d-block h-100 overflow-hidden" href="">
+                        <img class="img-fluid position-absolute w-100 h-100" src="{{ destinations.0.image.url }}" alt="{{ destinations.0.location }}" style="object-fit: cover;">
+                        <div class="bg-white text-danger fw-bold position-absolute top-0 start-0 m-3 py-1 px-2">{{ destinations.0.discount }}</div>
+                        <div class="bg-white text-primary fw-bold position-absolute bottom-0 end-0 m-3 py-1 px-2">{{ destinations.0.location }}</div>
+                    </a>
+                    {% endif %}
+                </div>
             </div>
-           
         </div>
-
     </div>
-    <div style="display: flex; justify-content: center; align-items: center; height: 30px;">
+        <div style="display: flex; justify-content: center; align-items: center; height: 30px;">
         <a class="btn py-3 px-5 mt-2" href="{%url 'gallary'%}" style="background-color: rgba(4, 66, 4, 0.647);color: white; border: none;">Gallary</a>
     </div>
     
